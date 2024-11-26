@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Match Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5F5;
+        }
+
+        css Copy code h1 {
+            text-align: center;
+            margin-top: 40px;
+            color: #2E4053;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 40px;
+            color: #2E4053;
+        }
+
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #FFFFFF;
+            box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2E4053;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            color: #2E4053;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #2ECC71;
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #27AE60;
+        }
+
+        #prediction-result {
+            align-content: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f8f8;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            color: #2E4053;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><center>Welcome to the IPL Match Winner Predictor!</center></h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+            </div>
+            <div class="form-group">
+                <label for="player_of_match">Player of Match:</label>
+                <input type="text" id="player_of_match" name="player_of_match" required>
+            </div>
+            <div class="form-group">
+                <label for="venue">Venue:</label>
+                <input type="text" id="venue" name="venue" required>
+            </div>
+            <div class="form-group">
+                <label for="neutral_venue">Neutral Venue:</label>
+                <select id="neutral_venue" name="neutral_venue" required>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="team1">Team 1:</label>
+                <input type="text" id="team1" name="team1" required>
+            </div>
+            <div class="form-group">
+                <label for="team2">Team 2:</label>
+                <input type="text" id="team2" name="team2" required>
+            </div>
+            <div class="form-group">
+                <label for="toss_winner">Toss Winner:</label>
+                <input type="text" id="toss_winner" name="toss_winner" required>
+            </div>
+            <div class="form-group">
+                <label for="toss_decision">Toss Decision:</label>
+                <select id="toss_decision" name="toss_decision" required>
+                    <option value="field">Field</option>
+                    <option value="bat">Bat</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="result_margin">Result Margin:</label>
+                <input type="number" id="result_margin" name="result_margin" required>
+            </div>
+            <div class="form-group">
+                <label for="umpire1">Umpire 1:</label>
+                <input type="text" id="umpire1" name="umpire1" required>
+            </div>
+            <div class="form-group">
+                <label for="umpire2">Umpire 2:</label>
+                <input type="text" id="umpire2" name="umpire2" required>
+            </div>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        <h2>Prediction:</h2>
+        <p id="prediction"><center>{{ prediction }}</center></p>
+    </div>
+
+</body>
+
+</html>
